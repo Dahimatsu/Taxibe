@@ -86,12 +86,19 @@ if (Debugger::$showBar === true && php_sapi_name() !== 'cli') {
 // $dsn = 'sqlite:' . $config['database']['file_path'];
 
 // Posgre Example;
-$dsn = 'pgsql:host=' . $config['database']['host'] . ';port=' . $config['database']['port'] . ';dbname=' . $config['database']['dbname'];
+$host 	= $config['database']['host'] ;
+$port 	= $config['database']['port'] ;
+$dbname = $config['database']['dbname'] ;
+
+$dsn = 'pgsql:host=' . $host . ';port=' . $port . ';dbname=' . $dbname;
+
+$user 	  = $config['database']['user'] ?? null;
+$password = $config['database']['password'] ?? null;
 
 // Register Flight::db() service
 // In development, use PdoQueryCapture to log queries; in production, use PdoWrapper for performance.
 $pdoClass = Debugger::$showBar === true ? PdoQueryCapture::class : PdoWrapper::class;
-$app->register('db', $pdoClass, [$dsn, $config['database']['user'] ?? null, $config['database']['password'] ?? null]);
+$app->register('db', $pdoClass, [$dsn, $user, $password]);
 
 /**********************************************
  *         Third-Party Integrations           *

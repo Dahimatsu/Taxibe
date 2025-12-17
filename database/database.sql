@@ -91,8 +91,8 @@ INSERT INTO s3_carburant (type) VALUES
 ('Gasoil');
 
 INSERT INTO s3_prix_carburant (id_carburant, prix, date_carburant) VALUES
-(1, 5500.00, '2025-12-01'), -- Essence
-(2, 5200.00, '2025-12-01'); -- Gasoil
+(1, 5100.00, '2025-12-10'), -- Essence
+(2, 4950.00, '2025-12-10'); -- Gasoil
 
 INSERT INTO s3_motos (marque, modele, id_carburant) VALUES
 ('Yamaha', 'Crypton 110', 1),
@@ -115,7 +115,7 @@ INSERT INTO s3_salaire (id_conducteur, pourcentage, date_salaire) VALUES
 (3, 40.00, '2025-12-01');
 
 INSERT INTO s3_entretien (id_moto, pourcentage, date_entretien) VALUES
-(1, 10.00, '2025-12-01'),
+(3, 11.00, '2025-12-09');
 (2, 8.00,  '2025-12-01'),
 (3, 12.00, '2025-12-01');
 
@@ -144,3 +144,101 @@ INSERT INTO s3_planning_moto (id_moto, id_conducteur, date_planning) VALUES
 (2, 1, '2025-12-17'),
 (3, 2, '2025-12-17');
 
+CREATE OR REPLACE VIEW v_course_details AS
+SELECT
+    c.id_course,
+    cd.nom AS nom_conducteur,
+    cd.prenom AS prenom_conducteur,
+    s.pourcentage AS salaire_pourcentage,
+    m.marque AS marque_moto,
+    m.modele AS modele_moto,
+    cons.consommation AS consommation_moto,
+    pc.prix AS prix_carburant,
+    c.prix_course AS prix_course,
+    c.date_course AS date_course
+FROM s3_course c
+JOIN s3_conducteurs cd ON c.id_conducteur = cd.id_conducteur
+JOIN s3_salaire s ON c.id_conducteur = s.id_conducteur
+JOIN s3_motos m ON c.id_moto = m.id_moto
+JOIN s3_consommation cons ON c.id_moto = cons.id_moto
+JOIN s3_prix_carburant pc ON m.id_carburant = pc.id_carburant
+JOIN s3_entretien e ON c.id_moto = e.id_moto
+WHERE
+    c.date_course >= s.date_salaire 
+    AND c.date_course >= cons.date_consommation
+    AND c.date_course >= pc.date_carburant
+    AND c.date_course >= e.date_entretien
+GROUP BY c.id_course;
+
+
+CREATE OR REPLACE VIEW v_course_details AS
+SELECT
+    c.id_course,
+    cd.nom AS nom_conducteur,
+    cd.prenom AS prenom_conducteur,
+
+    (SELECT s.pourcentage
+     FROM s3_salaire s
+     WHERE s.id_conducteur = c.id_conducteur
+       AND s.date_salaire <= c.date_course
+     ORDER BY s.date_salaire DESC
+     LIMIT 1) AS salaire,
+
+    m.marque AS marque_moto,
+    m.modele AS modele_moto,
+
+    (SELECT cons.consommation
+     FROM s3_consommation cons
+     WHERE cons.id_moto = c.id_moto
+       AND cons.date_consommation <= c.date_course
+     ORDER BY cons.date_consommation DESC
+     LIMIT 1) AS consommation,
+
+    (SELECT pc.prix
+     FROM s3_prix_carburant pc
+     WHERE pc.id_carburant = m.id_carburant
+       AND pc.date_carburant <= c.date_course
+     ORDER BY pc.date_carburant DESC
+     LIMIT 1) AS prix_carburant,
+
+    (SELECT e.pourcentage
+     FROM s3_entretien e
+     WHERE e.id_moto = c.id_moto
+       AND e.date_entretien <= c.date_course
+     ORDER BY e.date_entretien DESC
+     LIMIT 1) AS entretien,
+
+    c.prix_course,
+    c.date_course,
+    c.nb_kilometre
+FROM s3_course c
+JOIN s3_conducteurs cd ON c.id_conducteur = cd.id_conducteur
+JOIN s3_motos m ON c.id_moto = m.id_moto;
+
+
+CREATE OR REPLACE VIEW v_recette_journaliere AS
+SELECT
+    c.date_course,
+    SUM(c.prix_course) AS recette_totale
+FROM s3_course c
+GROUP BY c.date_course;
+
+CREATE OR REPLACE VIEW v_depense_journaliere AS
+SELECT 
+    v.date_course,
+    SUM(
+        ((v.consommation / 100) * v.prix_carburant * v.nb_kilometre) + 
+        ((v.salaire / 100) * v.prix_course) + 
+        ((v.entretien / 100) * v.prix_course)
+    ) AS depense_totale
+FROM v_course_details v
+GROUP BY v.date_course;
+
+CREATE OR REPLACE VIEW v_rapport_journalier AS
+SELECT
+    rj.date_course,
+    rj.recette_totale,
+    dj.depense_totale,
+    (rj.recette_totale - dj.depense_totale) AS profit_net
+FROM v_recette_journaliere rj
+JOIN v_depense_journaliere dj ON rj.date_course = dj.date_course;

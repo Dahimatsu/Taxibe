@@ -18,7 +18,7 @@ class ConducteurController
     public function getConducteurs()
     {
         $conducteurModel = new ConducteurModel(Flight::db());
-        return $chauffeurModel->getConducteurs();
+        return $conducteurModel->getConducteurs();
     }
 
     public function getConducteur($id)

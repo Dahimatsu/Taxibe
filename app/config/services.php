@@ -90,7 +90,7 @@ $host 	= $config['database']['host'] ;
 $port 	= $config['database']['port'] ;
 $dbname = $config['database']['dbname'] ;
 
-$dsn = 'pgsql:host=' . $host . ';port=' . $port . ';dbname=' . $dbname;
+$dsn = 'mysql:host=' . $host . ';port=' . $port . ';dbname=' . $dbname;
 
 $user 	  = $config['database']['user'] ?? null;
 $password = $config['database']['password'] ?? null;

@@ -22,7 +22,7 @@
 
                 <a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="/">
                     <i class="bi bi-speedometer2"></i>
-                    <span>Taxi Moto</span>
+                    <span>SpeedMoto</span>
                 </a>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"

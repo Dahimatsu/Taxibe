@@ -1,7 +1,7 @@
 <div class="row justify-content-center">
     <div class="col-lg-8">
 
-        <div class="card shadow-sm">
+        <div class="card">
             <div class="card-header bg-primary text-white d-flex align-items-center justify-content-between">
                 <h5 class="mb-0">
                     <i class="bi bi-plus-circle me-1"></i>
@@ -20,11 +20,11 @@
                         <label class="form-label">Conducteur</label>
                         <select name="id_conducteur" class="form-select" required>
                             <option value="">-- Choisir un conducteur --</option>
-                            <?php foreach ($conducteurs as $c): ?>
-                                <option value="<?= $c['id_conducteur'] ?>">
-                                    <?= $c['prenom'] . ' ' . $c['nom'] ?>
+                            <?php foreach ($conducteurs as $conducteur) { ?>
+                                <option value="<?= $conducteur['id_conducteur'] ?>">
+                                    <?= $conducteur['prenom'] . ' ' . $conducteur['nom'] ?>
                                 </option>
-                            <?php endforeach; ?>
+                            <?php } ?>
                         </select>
                     </div>
 

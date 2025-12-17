@@ -1,18 +1,20 @@
-* TODO
-* [x] Database - 4054
-  * [x] Creation database - 4054 
-  * [x] Creation des tables - 4054
-    * [x] Conducteurs - 4054
+/* -------------------------------------------------------------------------- */
+/*                                  Database                                  */
+/* -------------------------------------------------------------------------- */
+✔ Database @done
+  ✔ Creation database @done
+  ✔ Creation des tables @done
+    ✔ Conducteurs - 4054 @done
       - Id_conducteur
       - Nom
       - Prenom
-    * [x] Motos - 4054
+    ✔ Motos - 4054 @done
       - Id_moto
       - immatriculation
       - Marque
       - Modele
       - Carburant
-    * [x] Course – 4054
+    ✔ Course – 4054 @done
       - Id_course
       - Id_moto
       - Id_conducteur
@@ -24,53 +26,180 @@
       - heure_arrive
       - nb_kilometre
       - statut
-    * [x] Recettes - 4054
+    ✔ Recettes - 4054 @done
       - Id_recette
       - Id_course
       - Montant
-    * [x] Consommation - 4054
+    ✔ Consommation - 4054 @done
       - Id_moto
       - consommation
       - kilometrage
-    * [x] Carburant - 4054
+    ✔ Carburant - 4054 @done
       - id_carburant
       - type
-    * [x] Prix Carburant - 4054
+    ✔ Prix Carburant - 4054 @done
       - id_historique
       - type carburant
       - prix litre
       - date
-    * [x] Salaire - 4054
+    ✔ Salaire - 4054 @done
       - id_salaire
       - id_conducteur
       - pourcentage
       - date
-    * [x] Entretien - 4054
+    ✔ Entretien - 4054 @done
       - id_entretien
       - id_moto
       - pourcentage
       - date
-  * [x] Creation donnees test - 4054
-
-☐ Views
-  ✔ index @done (17/12/2025 12:04:51)
-    ✔ lien gestion Courses @done (17/12/2025 12:04:51)
-    ✔ lien rapport entreprise @done (17/12/2025 12:04:50)
-    ✔ formulaire de creation course @done (17/12/2025 12:04:01)
-
-  ☐ gestion Courses
-    ☐ liste des courses
-    ☐ bouton pour modifier une course
-    ☐ bouton pour valider une course
-    ☐ bouton pour supprimer une course
-    ☐ bouton pour details course
-
-  ☐ rapport entreprise
-    ☐ total Recettes
-    ☐ total depenses
-    ☐ total benefices
-    ☐ liste des Recettes par jour
-      ☐ date
-      ☐ recette
-      ☐ depenses
-      ☐ benefices
+    ✔ Planning moto - 4201 @done
+      - id_planning
+      - id_moto
+      - id conducteur
+      - date
+  ✔ Creation donnees test - 4201 @done
+  ✔ Vue - 4201 @done
+    ✔ Detail course @done
+    ✔ Recette Journaliere @done
+    ✔ Rapport Entreprise @done
+/* -------------------------------------------------------------------------- */
+/*                            Preparation du projet                           */
+/* -------------------------------------------------------------------------- */
+✔ Preparation du projet - 4054 @done
+    ✔ Structure du projet @done
+        ✔ Dossier app @done
+            ✔ Dossier config @done
+                ✔ Fichier config.php @done
+                ✔ Fichier services.php @done
+                ✔ Fichier routes.php @done
+                ✔ Fichier bootstrap.php @done
+            ✔ Dossier controllers @done
+            ✔ Dossier models @done
+        ✔ Dossier public @done
+            ✔ Fichier index.php @done
+            ✔ Dossier assets @done
+                ✔ Dossier css @done
+                ✔ Dossier js @done
+                ✔ Dossier images @done
+                ✔ Ajout du framework Bootstrap pour le design @done
+        ✔ Dossier views @done
+            ✔ Fichier accueil.php @done
+            ✔ Fichier layout.php (template de base avec header et footer) @done
+    ✔ Framework @done
+        ✔ FlightPHP @done
+            ✔ Installation de FlightPHP dans le dossier du projet @done
+            ✔ Configuration de FlightPHP @done
+                ✔ Fichier config.php @done
+                    ✔ Assurer que ça return les informations pour la Connexion à la base de données @done
+                ✔ Fichier server.php @done
+                    ✔ Assurer que ça execute l'extenstion Tracy pour le débogage @done
+                    ✔ Assurer la connexion à la base de données @done
+                    ✔ Assuer l'enreistrement de la base de données dans Flight::db() @done
+                ✔ Fichier routes.php @done
+                    ✔ Creation de la route pour l'index @done
+/* -------------------------------------------------------------------------- */
+/*                          Model - View - Controller                         */
+/* -------------------------------------------------------------------------- */
+✔ Page layout - 4054 @done
+  ✔ View @done
+    ✔ Header @done
+      ✔ Logo @done
+      ✔ Navigation @done
+        - Accueil
+        - Gestion des courses
+        - Rapport financier
+    ✔ Main @done
+      ✔ Recuperation dynamique des pages @done
+    ✔ Footer @done
+      ✔ ETU des etudiants @done
+  ✔ Routes @done
+    ✔ Route vers / en rendant la page layout et en data la page accueil.php @done
+✔ Page d'Accueil @done
+  ✔ View - 4201 @done
+    ✔ Phrase de Bienvenue @done
+    ✔ Lien vers la Gestion des courses @done
+    ✔ Lien vers le Rapport financier @done
+  ✔ Route - 4054 @done
+    ✔ Route vers /course/ en rendant la page layout.php et en data la page course.php @done
+✔ Page course.php @done
+  ✔ View - 4201 @done
+    ✔ Titre de la page @done
+    ✔ Lien vers l'ajout d'une nouvelle course @done
+    ✔ Lien vers la liste des courses @done
+    ✔ Lien vers le planning des motos @done
+  ✔ Route - 4054 @done
+    ✔ Route vers /course/nouvelle en rendant la page layout.php et en data la page inserer-course.php et la variable Conducteur recuperé en controlleurs @done
+    ✔ Route vers /course/liste en rendant la page layout et en data la page liste.php et la liste des courses recuperé en controlleurs @done
+    ✔ Route vers /course/planning en rendant la page layout.php et en data la page planning.php et la liste des motos et conducteurs recuperé en controlleurs @done
+  ✔ Controllers - 4054 @done
+    ✔ Conducteur @done
+      ✔ Fonction pour recuperer la liste des conducteurs via Model @done
+    ✔ Moto @done
+      ✔ Fonction pour recuperer la liste des motos via Model @done
+    ✔ Course @done
+      ✔ Fonction pour recuperer la liste des courses via Model @done
+  ✔ Models - 4054 @done
+    ✔ Conducteur @done
+      ✔ Fonction pour recuperer la liste des conducteurs dans la base de données @done
+    ✔ Moto @done
+      ✔ Fonction pour recuperer la liste des motos @done
+    ✔ Course @done
+      ✔ Fonction pour recuperer la liste des courses @done
+✔ Page nouvelle course @done
+	✔ View - 4201 @done
+		✔ Formulaire d'ajout d'une nouvelle course @done
+			- Selection du conducteur (liste deroulante) @done
+			- Selection de la moto (liste deroulante) @done
+			- Lieu de depart @done
+			- Date et heure de depart @done
+			- Lieu d'arrivee @done
+			- Date et heure d'arrivee @done
+			- Nombre de kilometre @done
+			- Statut de la course (en cours, terminee, annulee) @done
+			- Bouton pour soumettre le formulaire @done
+	✔ Route - 4054 @done
+		✔ Route POST vers /course/nouvelle pour traiter le formulaire d'ajout d'une nouvelle course via le controller Course @done
+	✔ Controllers - 4054 @done
+		✔ Course @done
+			✔ Fonction pour inserer une nouvelle course dans la base de données via le Model Course @done
+	✔ Models - 4054 @done
+		✔ Course @done
+			✔ Fonction pour inserer une nouvelle course dans la base de données @done
+✔ Page liste des courses @done
+	✔ View - 4201 @done
+		✔ Tableau affichant la liste des courses @done
+			- Colonnes : Id_course, Conducteur, Moto, Lieu_depart, Date_heure_depart, Lieu_arrivee, Date_heure_arrivee, Nb_kilometre, Statut @done
+	✔ Route - 4054 @done
+		✔ Route vers /course/liste pour afficher la liste des courses via le controller Course @done
+	✔ Controllers - 4054 @done
+		✔ Course @done
+			✔ Fonction pour recuperer la liste des courses via le Model Course @done
+	✔ Models - 4054 @done
+		✔ Course @done
+			✔ Fonction pour recuperer la liste des courses dans la base de données @done
+✔ Page planning des motos @done
+	✔ View - 4201 @done
+		✔ Tableau affichant le planning des motos @done
+			- Colonnes : Id_planning, Moto, Conducteur, Date @done
+	✔ Route - 4054 @done
+		✔ Route vers /course/planning pour afficher le planning des motos via le controller Course @done
+	✔ Controllers - 4054 @done
+		✔ Planning @done
+			✔ Fonction pour recuperer le planning des motos via le Model Course @done
+	✔ Models - 4054 @done
+		✔ Planning @done
+			✔ Fonction pour recuperer le planning des motos dans la base de données @done
+✔ Page rapport financier @done
+	✔ View - 4201 @done
+		✔ Affichage du rapport financier @done
+			- Total des recettes @done
+			- Total des depenses @done
+			- Benefice net @done
+	✔ Route - 4054 @done
+		✔ Route vers /rapport/ pour afficher le rapport financier via le controller Rapport @done
+	✔ Controllers - 4054 @done
+		✔ Rapport @done
+			✔ Fonction pour recuperer les donnees financieres via le Model Course @done
+	✔ Models - 4201 @done
+		✔ Rapport @done
+			✔ Fonction pour recuperer les recettes totales dans la base de données via la vue v_rapport_journalier @done

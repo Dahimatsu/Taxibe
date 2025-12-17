@@ -32,7 +32,7 @@ if (!empty($coursesJour)) {
 
 <div class="row g-3 mb-3">
     <div class="col-md-4">
-        <div class="card shadow-sm text-center">
+        <div class="card text-center">
             <div class="card-body">
                 <small class="text-muted">Recette totale</small>
                 <h5 class="fw-bold text-primary mb-0"><?= ar($totalRecette) ?></h5>
@@ -41,7 +41,7 @@ if (!empty($coursesJour)) {
     </div>
 
     <div class="col-md-4">
-        <div class="card shadow-sm text-center">
+        <div class="card text-center">
             <div class="card-body">
                 <small class="text-muted">Dépenses totales</small>
                 <h5 class="fw-bold text-warning mb-0"><?= ar($totalDepenses) ?></h5>
@@ -50,7 +50,7 @@ if (!empty($coursesJour)) {
     </div>
 
     <div class="col-md-4">
-        <div class="card shadow-sm text-center">
+        <div class="card text-center">
             <div class="card-body">
                 <small class="text-muted">Bénéfice total</small>
                 <h5 class="fw-bold <?= $totalBenefice >= 0 ? 'text-success' : 'text-danger' ?> mb-0">
@@ -61,7 +61,7 @@ if (!empty($coursesJour)) {
     </div>
 </div>
 
-<div class="card shadow-sm">
+<div class="card">
     <div class="card-header bg-primary text-white">
         <i class="bi bi-table me-1"></i> Détail journalier
     </div>
@@ -79,7 +79,7 @@ if (!empty($coursesJour)) {
                 </thead>
 
                 <tbody>
-                    <?php if (!empty($coursesJour)): ?>
+                    <?php if (!empty($coursesJour)) { ?>
                         <?php foreach ($coursesJour as $row): ?>
                             <?php
                                 $recette  = ($row['recette'] ?? 0);
@@ -95,13 +95,13 @@ if (!empty($coursesJour)) {
                                 </td>
                             </tr>
                         <?php endforeach; ?>
-                    <?php else: ?>
+                    <?php } else { ?>
                         <tr>
                             <td colspan="4" class="text-center text-muted py-4">
                                 Aucune donnée.
                             </td>
                         </tr>
-                    <?php endif; ?>
+                    <?php } ?>
                 </tbody>
             </table>
         </div>

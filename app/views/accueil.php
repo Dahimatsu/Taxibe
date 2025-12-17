@@ -11,7 +11,7 @@
 <div class="row g-4 justify-content-center">
 
     <div class="col-md-4">
-        <div class="card shadow-sm h-100 text-center">
+        <div class="card h-100 text-center">
             <div class="card-body">
                 <i class="bi bi-list-check fs-1 text-primary"></i>
                 <h5 class="mt-3">Gestion des courses</h5>
@@ -26,7 +26,7 @@
     </div>
 
     <div class="col-md-4">
-        <div class="card shadow-sm h-100 text-center">
+        <div class="card h-100 text-center">
             <div class="card-body">
                 <i class="bi bi-graph-up-arrow fs-1 text-warning"></i>
                 <h5 class="mt-3">Rapport financier</h5>

@@ -22,19 +22,6 @@
         <form action="/course/update/<?= urlencode($course['id_course']) ?>" method="post" class="row g-3">
 
             <div class="col-md-6">
-                <label class="form-label">Moto</label>
-                <select name="id_moto" class="form-select" required>
-                    <option value="">-- Changer de moto --</option>
-                    <?php foreach ($motos as $m): ?>
-                        <option value="<?= $m['id_moto'] ?>"
-                            <?= ($m['id_moto'] === $course['id_moto']) ? 'selected' : '' ?>>
-                            <?= htmlspecialchars($m['marque'] . ' ' . $m['modele']) ?>
-                        </option>
-                    <?php endforeach; ?>
-                </select>
-            </div>
-
-            <div class="col-md-6">
                 <label class="form-label">Conducteur</label>
                 <select name="id_conducteur" class="form-select" required>
                     <option value="">-- Changer de conducteur --</option>

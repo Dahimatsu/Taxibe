@@ -1,6 +1,6 @@
 <?php
 
-use app\controllers\chauffeurController;
+use app\controllers\ConducteurController;
 
 use app\middlewares\SecurityHeadersMiddleware;
 use flight\Engine;
@@ -19,10 +19,10 @@ $router->group('', function (Router $router) use ($app) {
         $app->render('layout', ['page' => "accueil.php"]);
     });
 
-    $router->get('/chauffeurs', function () use ($app) {
-        $chauffeurController = new ChauffeurController($app);
-        $chauffeurs = $chauffeurController->getChauffeurs();
-        $app->render('layout', ['page' => "chauffeurs.php",'chauffeurs' => $chauffeurs]);
+    $router->get('/conducteur', function () use ($app) {
+        $conducteurController = new ConducteurController($app);
+        $conducteurs = $conducteurController->getConducteurs();
+        $app->render('layout', ['page' => "conducteur.php",'conducteurs' => $chauffeurs]);
     });
 
 }, [SecurityHeadersMiddleware::class]);

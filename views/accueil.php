@@ -8,7 +8,7 @@
         <div class="card-body text-center">
             <h5 class="card-title">Gestion des chauffeurs</h5>
             <p class="card-text text-muted">Ajouter, modifier, supprimer des chauffeurs</p>
-            <a href="chauffeurs" class="btn btn-primary w-100">Gérer</a>
+            <a href="conducteur" class="btn btn-primary w-100">Gérer</a>
         </div>
     </div>
 

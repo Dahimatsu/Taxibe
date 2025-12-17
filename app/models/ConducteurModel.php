@@ -4,7 +4,7 @@ namespace App\Models;
 
 use PDOException;
 
-class ChauffeurModel {
+class ConducteurModel {
 
     private $database;
     private $id;
@@ -55,12 +55,12 @@ class ChauffeurModel {
         $this->prenom = $prenom;
     }
 
-    public function getChauffeurs()
+    public function getConducteurs()
     {
         $DBH = $this->getDatabase();
 
         $query = "SELECT * 
-                  FROM chauffeur";
+                  FROM conducteurs";
 
         try {
             $STH = $DBH->prepare($query);
@@ -75,13 +75,13 @@ class ChauffeurModel {
         return null;
     }
 
-    public function getChauffeur($id)
+    public function getConducteur($id)
     {
         $DBH = $this->getDatabase();
 
         $query = "SELECT * 
-                  FROM chauffeur 
-                  WHERE id_chauffeur = ?";
+                  FROM conducteurs 
+                  WHERE id_conducteur = ?";
 
         try {
             $STH = $DBH->prepare($query);

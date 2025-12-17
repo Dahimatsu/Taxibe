@@ -11,8 +11,8 @@ $totalBenefice = 0;
 if (!empty($coursesJour)) {
     foreach ($coursesJour as $row) {
         $totalRecette  += (float)($row['recette'] ?? 0);
-        $totalDepenses += (float)($row['depenses'] ?? 0);
-        $totalBenefice += (float)($row['benefice'] ?? (($row['recette'] ?? 0) - ($row['depenses'] ?? 0)));
+        $totalDepenses += (float)($row['depense'] ?? 0);
+        $totalBenefice += (float)($row['benefice'] ?? (($row['recette'] ?? 0) - ($row['depense'] ?? 0)));
     }
 }
 ?>
@@ -30,7 +30,6 @@ if (!empty($coursesJour)) {
     </a>
 </div>
 
-<!-- TOTAUX (EN HAUT) -->
 <div class="row g-3 mb-3">
     <div class="col-md-4">
         <div class="card shadow-sm text-center">
@@ -62,7 +61,6 @@ if (!empty($coursesJour)) {
     </div>
 </div>
 
-<!-- TABLE -->
 <div class="card shadow-sm">
     <div class="card-header bg-primary text-white">
         <i class="bi bi-table me-1"></i> Détail journalier
@@ -85,13 +83,13 @@ if (!empty($coursesJour)) {
                         <?php foreach ($coursesJour as $row): ?>
                             <?php
                                 $recette  = (float)($row['recette'] ?? 0);
-                                $depenses = (float)($row['depenses'] ?? 0);
-                                $benefice = (float)($row['benefice'] ?? ($recette - $depenses));
+                                $depense = (float)($row['depense'] ?? 0);
+                                $benefice = (float)($row['benefice'] ?? ($recette - $depense));
                             ?>
                             <tr>
                                 <td class="fw-semibold"><?= htmlspecialchars($row['date'] ?? '') ?></td>
                                 <td class="text-end"><?= ar($recette) ?></td>
-                                <td class="text-end"><?= ar($depenses) ?></td>
+                                <td class="text-end"><?= ar($depense) ?></td>
                                 <td class="text-end fw-bold <?= $benefice >= 0 ? 'text-success' : 'text-danger' ?>">
                                     <?= ar($benefice) ?>
                                 </td>

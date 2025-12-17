@@ -5,7 +5,7 @@ USE taximoto;
 -- 1.a Carburant
 CREATE TABLE carburant (
     id_carburant INT PRIMARY KEY AUTO_INCREMENT,
-    type         VARCHAR(50),
+    type         VARCHAR(50)
 );
 
 -- 1.b Prix carburant
@@ -15,7 +15,7 @@ CREATE Table prix_carburant (
     prix           DECIMAL(10,2),
     date_carburant DATE,
     FOREIGN KEY (id_carburant) REFERENCES carburant(id_carburant)
-)
+);
 
 -- 2. Motos
 CREATE TABLE motos (
@@ -30,7 +30,7 @@ CREATE TABLE motos (
 CREATE TABLE conducteurs (
     id_conducteur INT PRIMARY KEY AUTO_INCREMENT,
     nom           VARCHAR(50),
-    prenom        VARCHAR(50),
+    prenom        VARCHAR(50)
 );
 
 -- 4. Course
@@ -45,7 +45,7 @@ CREATE TABLE course (
     heure_arrivee TIME,
     nb_kilometre  DECIMAL(10,2),
     prix_course   DECIMAL(10,2),
-    FOREIGN KEY (id_conducteur) REFERENCES motos(id_moto),
+    FOREIGN KEY (id_moto) REFERENCES motos(id_moto),
     FOREIGN KEY (id_conducteur) REFERENCES conducteurs(id_conducteur)
 );
 

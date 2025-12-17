@@ -81,6 +81,11 @@ $router->group('', function (Router $router) use ($app) {
             $courseController = new CourseController($app);
             $courseController->modifierCourse($id);
         }); 
+
+        $router->get('/valider/@id', function ($id) use ($app) {
+            $courseController = new CourseController($app);
+            $courseController->validerCourse($id);
+        });
     });
 
 }, [SecurityHeadersMiddleware::class]);

@@ -158,4 +158,20 @@ class CourseModel
         return null;
     }
 
+    public function validerCourse($id) {
+        $DBH = $this->getDatabase();
+
+        $query = "UPDATE s3_course
+                  SET heure_arrivee = CURRENT_TIME()
+                  WHERE id_course = ?";
+        
+        try {
+            $STH = $DBH->prepare($query);
+            $STH->execute([$id]);
+        } catch (PDOException $e) {
+            error_log($e->getMessage());
+            throw $e;
+        }
+        return null;
+    }
 }

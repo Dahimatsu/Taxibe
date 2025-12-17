@@ -175,7 +175,8 @@ class CourseModel
     public function getRapport() {
         $DBH = $this->getDatabase();
 
-        $query = "";
+        $query = "SELECT * 
+                  FROM v_rapport_journalier";
 
         try {
             $STH = $DBH->prepare($query);

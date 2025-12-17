@@ -91,7 +91,7 @@ $router->group('', function (Router $router) use ($app) {
             $courseController = new CourseController($app);
             $courses = $courseController->getRapport();
 
-            $app->render('layout', ['page' => "rapport.php", 'courses' => $courses]);
+            $app->render('layout', ['page' => "rapport.php", 'coursesJour' => $courses]);
         });
     });
 

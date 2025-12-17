@@ -1,5 +1,5 @@
 * TODO
-* [ ] Database - 4054
+* [x] Database - 4054
   * [x] Creation database - 4054 
   * [x] Creation des tables - 4054
     * [x] Conducteurs - 4054
@@ -53,18 +53,17 @@
   * [x] Creation donnees test - 4054
 
 ☐ Views
-  ☐ index
-    ☐ lien gestion Courses
-    ☐ lien rapport entreprise
+  ✔ index @done (17/12/2025 12:04:51)
+    ✔ lien gestion Courses @done (17/12/2025 12:04:51)
+    ✔ lien rapport entreprise @done (17/12/2025 12:04:50)
+    ✔ formulaire de creation course @done (17/12/2025 12:04:01)
 
   ☐ gestion Courses
-    ☐ lien vers liste des courses
-      ☐ liste des courses
-      ☐ bouton pour modifier une course
-      ☐ bouton pour valider une course
-      ☐ bouton pour supprimer une course
-      ☐ bouton pour details course
-    ☐ formulaire de creation course
+    ☐ liste des courses
+    ☐ bouton pour modifier une course
+    ☐ bouton pour valider une course
+    ☐ bouton pour supprimer une course
+    ☐ bouton pour details course
 
   ☐ rapport entreprise
     ☐ total Recettes

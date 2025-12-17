@@ -77,6 +77,15 @@ CREATE TABLE s3_entretien (
     FOREIGN KEY (id_moto) REFERENCES s3_motos(id_moto)
 );
 
+CREATE TABLE s3_planning_moto (
+    id_planning_moto INT PRIMARY KEY AUTO_INCREMENT,
+    id_moto          INT,
+    id_conducteur    INT,
+    date_planning    DATE,
+    FOREIGN KEY (id_moto) REFERENCES s3_motos(id_moto),
+    FOREIGN KEY (id_conducteur) REFERENCES s3_conducteurs(id_conducteur)
+);
+
 INSERT INTO s3_carburant (type) VALUES
 ('Essence'),
 ('Gasoil');
@@ -121,4 +130,17 @@ INSERT INTO s3_course (
 (3, 3, '2025-12-10', 'Itaosy', '10:10:00', '67 Ha', '10:40:00', 9.2, 10000.00),
 (1, 2, '2025-12-10', 'Ankorondrano', '14:00:00', 'Ivandry', '14:15:00', 3.5, 4000.00),
 (2, 1, '2025-12-10', 'Analamahitsy', '16:20:00', 'Behoririka', '16:45:00', 5.0, 6000.00);
+
+INSERT INTO s3_planning_moto (id_moto, id_conducteur, date_planning) VALUES
+(1, 1, '2025-12-15'),
+(2, 2, '2025-12-15'),
+(3, 3, '2025-12-15'),
+
+(1, 2, '2025-12-16'),
+(2, 3, '2025-12-16'),
+(3, 1, '2025-12-16'),
+
+(1, 3, '2025-12-17'),
+(2, 1, '2025-12-17'),
+(3, 2, '2025-12-17');
 

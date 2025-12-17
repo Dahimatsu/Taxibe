@@ -41,8 +41,8 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link <?= str_contains($_SERVER['REQUEST_URI'], 'courses') ? 'active' : '' ?>"
-                                href="/courses">
+                            <a class="nav-link <?= str_contains($_SERVER['REQUEST_URI'], 'course') ? 'active' : '' ?>"
+                                href="/course">
                                 <i class="bi bi-list-check me-1"></i> Gérer les courses
                             </a>
                         </li>

@@ -11,19 +11,7 @@
 
             <div class="card-body">
 
-                <form action="#" method="post" class="row g-3">
-
-                    <div class="col-md-6">
-                        <label class="form-label">Moto</label>
-                        <select name="id_moto" class="form-select" required>
-                            <option value="">-- Choisir une moto --</option>
-                            <?php foreach ($motos as $moto): ?>
-                                <option value="<?= $moto['id_moto'] ?>">
-                                    <?= $moto['marque'] . ' ' . $moto['modele'] ?>
-                                </option>
-                            <?php endforeach; ?>
-                        </select>
-                    </div>
+                <form action="/inserer-course" method="post" class="row g-3">
 
                     <div class="col-md-6">
                         <label class="form-label">Conducteur</label>

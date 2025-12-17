@@ -60,4 +60,25 @@ class MotoModel
         }
         return null;
     }
+
+    public function getidMotoByConducteur($id) {
+        $DBH = $this->getDatabase();
+
+        $query = "SELECT id_moto
+                  FROM s3_planning_moto
+                  WHERE id_conducteur = ?
+                  ORDER BY date_planning DESC
+                  LIMIT 1";
+
+        try {
+            $STH = $DBH->prepare($query);
+            $STH->bindParam(1, $id);
+            $STH->execute();
+            return $STH->fetch();
+        } catch (PDOException $e) {
+            error_log("Erreur : " . $e->getMessage());
+            throw $e;
+        }
+        return null;
+    }
 }

@@ -49,14 +49,19 @@ class CourseModel
     public function getCourse($id) {
         $DBH = $this->getDatabase();
 
-        $query = "SELECT * 
-                  FROM s3_courses 
-                  WHERE id = ?";
+        $query = "SELECT c.id_course, c.id_conducteur, c.date_course, c.lieu_depart, c.lieu_arrivee, c.heure_depart, c.heure_arrivee, c.nb_kilometre, c.prix_course,
+                       m.marque, m.modele,
+                       cd.nom, cd.prenom
+                  FROM s3_course c
+                  JOIN s3_motos m 
+                  ON c.id_moto = m.id_moto 
+                  JOIN s3_conducteurs cd 
+                  ON c.id_conducteur = cd.id_conducteur
+                  WHERE c.id_course = ?";
 
         try {
             $STH = $DBH->prepare($query);
-            $STH->bindParam(1, $id);
-            $STH->execute();
+            $STH->execute([$id]);
             return $STH->fetch();
         } catch (PDOException $e) {
             error_log($e->getMessage());

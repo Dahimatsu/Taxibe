@@ -51,6 +51,13 @@ $router->group('', function (Router $router) use ($app) {
 
             $app->render('layout', ['page' => "liste.php", 'courses' => $courses]);
         });
+
+        $router->get('/detail/@id', function ($id) use ($app) {
+            $courseController = new CourseController($app);
+            $course = $courseController->getCourse($id);
+
+            $app->render('layout', ['page' => "detail.php", 'course' => $course]);
+        });
     });
 
     $router->post('/inserer-course',function () use ($app) {

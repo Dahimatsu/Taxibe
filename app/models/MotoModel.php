@@ -4,8 +4,8 @@ namespace App\Models;
 
 use PDOException;
 
-class ConducteurModel {
-
+class MotoModel
+{
     private $database;
 
     public function __construct($database) {
@@ -22,12 +22,11 @@ class ConducteurModel {
         $this->database = $database;
     }
 
-    public function getConducteurs()
-    {
+    public function getMotos() {
         $DBH = $this->getDatabase();
 
         $query = "SELECT * 
-                  FROM s3_conducteurs";
+                  FROM s3_motos";
 
         try {
             $STH = $DBH->prepare($query);
@@ -35,30 +34,29 @@ class ConducteurModel {
 
             return $STH->fetchAll();
         } catch (PDOException $e) {
-            error_log($e->getMessage());
+            error_log("Erreur : " . $e->getMessage());
             throw $e;
         }
 
         return null;
     }
 
-    public function getConducteur($id)
-    {
+    public function getMoto($id) {
         $DBH = $this->getDatabase();
 
         $query = "SELECT * 
-                  FROM s3_conducteurs 
-                  WHERE id_conducteur = ?";
+                  FROM s3_motos 
+                  WHERE idMoto = ?";
 
         try {
             $STH = $DBH->prepare($query);
-            $STH->bindParam(1,$id);
+            $STH->bindParam(1, $id);
             $STH->execute();
-
             return $STH->fetch();
         } catch (PDOException $e) {
-            error_log($e->getMessage());
+            error_log("Erreur : " . $e->getMessage());
             throw $e;
         }
+        return null;
     }
 }

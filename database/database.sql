@@ -36,8 +36,8 @@ CREATE TABLE conducteurs (
 -- 4. Course
 CREATE TABLE course (
     id_course     INT PRIMARY KEY AUTO_INCREMENT,
-    id_moto       VARCHAR(10),
-    id_conducteur VARCHAR(10),
+    id_moto       INT,
+    id_conducteur INT,
     date_course   DATE,
     lieu_depart   VARCHAR(100),
     heure_depart  TIME,

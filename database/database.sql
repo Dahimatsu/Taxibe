@@ -1,52 +1,78 @@
-CREATE DATABASE taxibe ;
-\c taxibe;
+CREATE DATABASE taximoto ;
 
--- Table & Sequence Chauffeur
-CREATE SEQUENCE seq_chauffeur START 1;
-CREATE TABLE chauffeur (
-    id_chauffeur VARCHAR(10) PRIMARY KEY DEFAULT ('CHF' || to_char(nextval('seq_chauffeur'), 'FM000000')),
-    nom          VARCHAR(100),
-    prenom       VARCHAR(100)
+USE taximoto;
+
+-- 1.a Carburant
+CREATE TABLE carburant (
+    id_carburant INT PRIMARY KEY AUTO_INCREMENT,
+    type         VARCHAR(50),
 );
 
-INSERT INTO chauffeur (nom, prenom) VALUES
-('Dupont', 'Jean'),
-('Martin', 'Sophie'),
-('Bernard', 'Luc'),
-('Durand', 'Claire'),
-('Leroy', 'Paul');
+-- 1.b Prix carburant
+CREATE Table prix_carburant (
+    id_prix        INT PRIMARY KEY AUTO_INCREMENT,
+    id_carburant   INT,
+    prix           DECIMAL(10,2),
+    date_carburant DATE,
+    FOREIGN KEY (id_carburant) REFERENCES carburant(id_carburant)
+)
 
--- Table & Sequence Voiture
-CREATE SEQUENCE seq_voiture START 1;
-CREATE TABLE voiture (
-    id_voiture      VARCHAR(10) PRIMARY KEY DEFAULT ('VTR' || to_char(nextval('seq_voiture'), 'FM000000')),
-    immatriculation VARCHAR(10),
-    marque          VARCHAR(20),
-    modele          VARCHAR(20)
+-- 2. Motos
+CREATE TABLE motos (
+    id_moto      INT PRIMARY KEY AUTO_INCREMENT,
+    marque       VARCHAR(50),
+    modele       VARCHAR(50),
+    id_carburant INT,
+    FOREIGN KEY (id_carburant) REFERENCES carburant(id_carburant)
 );
 
-INSERT INTO voiture (immatriculation, marque, modele) VALUES
-('AB-123-CD', 'Renault', 'Clio'),
-('EF-456-GH', 'Peugeot', '208'),
-('IJ-789-KL', 'Citroën', 'C3'),
-('MN-012-OP', 'Toyota', 'Yaris'),
-('QR-345-ST', 'Ford', 'Fiesta');
+-- 3. Conducteurs
+CREATE TABLE conducteurs (
+    id_conducteur INT PRIMARY KEY AUTO_INCREMENT,
+    nom           VARCHAR(50),
+    prenom        VARCHAR(50),
+);
 
--- Table & Sequence Trajet
-CREATE SEQUENCE seq_trajet START 1;
-CREATE TABLE trajet (
-    id_trajet         VARCHAR(10) PRIMARY KEY DEFAULT ('TRJ' || to_char(nextval('seq_trajet'), 'FM000000')),
-    id_voiture        VARCHAR(10),
-    id_chauffeur      VARCHAR(10),
-    lieu_depart       VARCHAR(100),
-    date_depart       TIMESTAMP,
-    heure_depart      TIME,
-    lieu_arrivee      VARCHAR(100),
-    date_arrivee      TIMESTAMP,
-    heure_arrivee     TIME,
-    montant_recette   NUMERIC(10,2),
-    montant_carburant NUMERIC(10,2),
-    nb_kilometre      NUMERIC(10,2),
-    FOREIGN KEY (id_voiture)   REFERENCES voiture(id_voiture),
-    FOREIGN KEY (id_chauffeur) REFERENCES chauffeur(id_chauffeur)
+-- 4. Course
+CREATE TABLE course (
+    id_course     INT PRIMARY KEY AUTO_INCREMENT,
+    id_moto       VARCHAR(10),
+    id_conducteur VARCHAR(10),
+    date_course   DATE,
+    lieu_depart   VARCHAR(100),
+    heure_depart  TIME,
+    lieu_arrivee  VARCHAR(100),
+    heure_arrivee TIME,
+    nb_kilometre  DECIMAL(10,2),
+    prix_course   DECIMAL(10,2),
+    FOREIGN KEY (id_conducteur) REFERENCES motos(id_moto),
+    FOREIGN KEY (id_conducteur) REFERENCES conducteurs(id_conducteur)
+);
+
+-- 5. Consommation
+CREATE TABLE consommation (
+    id_consommation   INT PRIMARY KEY AUTO_INCREMENT,
+    id_moto           INT,
+    consommation      DECIMAL(10,2),
+    kilometrage       DECIMAL(10,2) DEFAULT 100.0,
+    date_consommation DATE,
+    FOREIGN KEY (id_moto) REFERENCES motos(id_moto)
+);
+
+-- 6. Salaire
+CREATE TABLE salaire (
+    id_salaire    INT PRIMARY KEY AUTO_INCREMENT,
+    id_conducteur INT,
+    pourcentage   DECIMAL(10,2),
+    date_salaire  DATE,
+    FOREIGN KEY (id_conducteur) REFERENCES conducteurs(id_conducteur)
+);
+
+-- 8. Entretien
+CREATE TABLE entretien (
+    id_entretien   INT PRIMARY KEY AUTO_INCREMENT,
+    id_moto        INT,
+    pourcentage    DECIMAL(10,2),
+    date_entretien DATE,
+    FOREIGN KEY (id_moto) REFERENCES motos(id_moto)
 );

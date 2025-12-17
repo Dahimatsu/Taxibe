@@ -2,11 +2,14 @@
     <div class="col-lg-8">
 
         <div class="card shadow-sm">
-            <div class="card-header bg-primary text-white">
+            <div class="card-header bg-primary text-white d-flex align-items-center justify-content-between">
                 <h5 class="mb-0">
                     <i class="bi bi-plus-circle me-1"></i>
                     Nouvelle course
                 </h5>
+                <a href="/course" class="btn btn-outline text-white border-white">
+                    <i class="bi bi-arrow-left"></i> Retour
+                </a>
             </div>
 
             <div class="card-body">

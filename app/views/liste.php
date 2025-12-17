@@ -7,7 +7,7 @@
     </div>
 
     <div class="d-flex gap-2">
-        <a href="/courses/nouvelle-course" class="btn btn-primary">
+        <a href="/course/nouvelle" class="btn btn-primary">
             <i class="bi bi-plus-circle"></i> Nouvelle course
         </a>
         <a href="/course" class="btn btn-outline-secondary">

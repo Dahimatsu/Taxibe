@@ -8,7 +8,7 @@
         </h2>
         <small class="text-muted">Affecter une moto à un conducteur pour une date</small>
       </div>
-      <a href="/courses" class="btn btn-outline-secondary">
+      <a href="/course" class="btn btn-outline-secondary">
         <i class="bi bi-arrow-left"></i> Retour
       </a>
     </div>

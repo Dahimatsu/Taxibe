@@ -28,21 +28,6 @@
     <div class="col-md-4">
         <div class="card shadow-sm h-100 text-center">
             <div class="card-body">
-                <i class="bi bi-calendar-week fs-1 text-success"></i>
-                <h5 class="mt-3">Planning moto</h5>
-                <p class="text-muted">
-                    Affecter les motos aux conducteurs par jour.
-                </p>
-                <a href="/planning-moto" class="btn btn-success w-100">
-                    Voir le planning
-                </a>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-md-4">
-        <div class="card shadow-sm h-100 text-center">
-            <div class="card-body">
                 <i class="bi bi-graph-up-arrow fs-1 text-warning"></i>
                 <h5 class="mt-3">Rapport financier</h5>
                 <p class="text-muted">

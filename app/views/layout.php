@@ -21,7 +21,7 @@
             <div class="container">
 
                 <a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="/">
-                    <i class="bi bi-bicycle"></i>
+                    <i class="bi bi-speedometer2"></i>
                     <span>Taxi Moto</span>
                 </a>
 

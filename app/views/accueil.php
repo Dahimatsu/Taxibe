@@ -1,6 +1,6 @@
 <div class="text-center mb-5">
     <h1 class="fw-bold display-5">
-        <i class="bi bi-bicycle me-2"></i>
+        <i class="bi bi-speedometer2 me-2"></i>
         Bienvenue sur <span class="text-primary">SpeedMoto</span>
     </h1>
     <p class="lead text-muted mt-3">

@@ -51,3 +51,27 @@
       - pourcentage
       - date
   * [x] Creation donnees test - 4054
+
+☐ Views
+  ☐ index
+    ☐ lien gestion Courses
+    ☐ lien rapport entreprise
+
+  ☐ gestion Courses
+    ☐ lien vers liste des courses
+      ☐ liste des courses
+      ☐ bouton pour modifier une course
+      ☐ bouton pour valider une course
+      ☐ bouton pour supprimer une course
+      ☐ bouton pour details course
+    ☐ formulaire de creation course
+
+  ☐ rapport entreprise
+    ☐ total Recettes
+    ☐ total depenses
+    ☐ total benefices
+    ☐ liste des Recettes par jour
+      ☐ date
+      ☐ recette
+      ☐ depenses
+      ☐ benefices

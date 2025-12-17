@@ -14,21 +14,21 @@
         <div class="row g-3">
 
             <div class="col-md-4">
-                <a href="/course/planning"
+                <a href="/course/nouvelle"
                    class="card text-decoration-none h-100 shadow-sm border-0 text-center">
                     <div class="card-body">
-                        <i class="bi bi-calendar-week fs-1 text-primary"></i>
-                        <h5 class="mt-3">Planning moto</h5>
+                        <i class="bi bi-plus-circle fs-1 text-warning"></i>
+                        <h5 class="mt-3">Nouvelle course</h5>
                         <p class="text-muted small">
-                            Affectation des motos par jour
+                            Enregistrer une nouvelle course
                         </p>
                     </div>
                 </a>
             </div>
-
+            
             <div class="col-md-4">
                 <a href="/course/liste"
-                   class="card text-decoration-none h-100 shadow-sm border-0 text-center">
+                    class="card text-decoration-none h-100 shadow-sm border-0 text-center">
                     <div class="card-body">
                         <i class="bi bi-card-list fs-1 text-success"></i>
                         <h5 class="mt-3">Liste des courses</h5>
@@ -40,13 +40,13 @@
             </div>
 
             <div class="col-md-4">
-                <a href="/course/nouvelle"
-                   class="card text-decoration-none h-100 shadow-sm border-0 text-center">
+                <a href="/course/planning"
+                class="card text-decoration-none h-100 shadow-sm border-0 text-center">
                     <div class="card-body">
-                        <i class="bi bi-plus-circle fs-1 text-warning"></i>
-                        <h5 class="mt-3">Nouvelle course</h5>
+                        <i class="bi bi-calendar-week fs-1 text-primary"></i>
+                        <h5 class="mt-3">Planning moto</h5>
                         <p class="text-muted small">
-                            Enregistrer une nouvelle course
+                            Affectation des motos par jour
                         </p>
                     </div>
                 </a>

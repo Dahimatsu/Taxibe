@@ -34,7 +34,10 @@ $router->group('', function (Router $router) use ($app) {
     });
 
     $router->get('/liste',function () use ($app) {
-        $app->render('layout', ['page' => "liste.php"]);
+        $courseController = new CourseController($app);
+        $courses = $courseController->getCourses();
+        
+        $app->render('layout', ['page' => "liste.php", 'courses' => $courses]);
     });
 
     $router->get('/course',function () use ($app) {

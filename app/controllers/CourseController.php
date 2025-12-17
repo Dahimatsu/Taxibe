@@ -28,4 +28,10 @@ class CourseController
         $courseModel = new CourseModel(Flight::db());
         return $courseModel->getPlanning();
     }
+
+    public function getCourses()
+    {
+        $courseModel = new CourseModel(Flight::db());
+        return $courseModel->getCourses();
+    }
 }

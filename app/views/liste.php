@@ -80,7 +80,7 @@
                             </td>
 
                             <td class="text-end"><?= number_format($km, 1, ',', ' ') ?></td>
-                            <td class="text-end fw-bold"><?= ar($prix) ?></td>
+                            <td class="text-end fw-bold"><?= number_format($prix, 2, ',', ' ') ?> Ar</td>
                             <td><?= htmlspecialchars($moto) ?></td>
                             <td><?= htmlspecialchars($conducteur) ?></td>
 

@@ -13,7 +13,7 @@ class CourseModel
         $this->setDatabase($database);
     }
 
-    public function getDatabase()
+    public function getDatabase(): mixed
     {
         return $this->database;
     }
@@ -43,7 +43,6 @@ class CourseModel
             error_log($e->getMessage());
             throw $e;
         }
-        return null;
     }
 
     public function getCourse($id) {
@@ -67,7 +66,6 @@ class CourseModel
             error_log($e->getMessage());
             throw $e;
         }
-        return null;
     }
 
     public function insertCourse($course) {
@@ -118,7 +116,6 @@ class CourseModel
             error_log($e->getMessage());
             throw $e;
         }
-        return null;
     }
 
     public function updateCourse($id, $course) {

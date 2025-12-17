@@ -12,7 +12,7 @@ class MotoModel
         $this->setDatabase($database);
     }
 
-    public function getDatabase()
+    public function getDatabase(): mixed
     {
         return $this->database;
     }
@@ -38,7 +38,6 @@ class MotoModel
             throw $e;
         }
 
-        return null;
     }
 
     public function getMoto($id) {
@@ -58,7 +57,6 @@ class MotoModel
             error_log("Erreur : " . $e->getMessage());
             throw $e;
         }
-        return null;
     }
 
     public function getidMotoByConducteur($id) {
@@ -79,6 +77,5 @@ class MotoModel
             error_log("Erreur : " . $e->getMessage());
             throw $e;
         }
-        return null;
     }
 }

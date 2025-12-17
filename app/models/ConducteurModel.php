@@ -12,7 +12,7 @@ class ConducteurModel {
         $this->setDatabase($database);
     }
 
-    public function getDatabase()
+    public function getDatabase(): mixed
     {
         return $this->database;
     }
@@ -39,7 +39,6 @@ class ConducteurModel {
             throw $e;
         }
 
-        return null;
     }
 
     public function getConducteur($id)

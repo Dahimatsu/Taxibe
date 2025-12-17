@@ -87,12 +87,13 @@ $router->group('', function (Router $router) use ($app) {
             $courseController->validerCourse($id);
         });
 
-        $router->get('/rapport', function () use ($app) {
-            $courseController = new CourseController($app);
-            $courses = $courseController->getRapport();
+    });
 
-            $app->render('layout', ['page' => "rapport.php", 'coursesJour' => $courses]);
-        });
+    $router->get('/rapport', function () use ($app) {
+        $courseController = new CourseController($app);
+        $courses = $courseController->getRapport();
+
+        $app->render('layout', ['page' => "rapport.php", 'coursesJour' => $courses]);
     });
 
 }, [SecurityHeadersMiddleware::class]);

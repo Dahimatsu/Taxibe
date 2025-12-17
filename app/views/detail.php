@@ -107,12 +107,12 @@
 
 <div class="d-flex gap-2">
     <?php if (empty($course['heure_arrivee'])): ?>
-        <a href="/courses/modifier/<?= urlencode($course['id_course']) ?>"
+        <a href="/course/modifier/<?= urlencode($course['id_course']) ?>"
            class="btn btn-outline-primary">
             <i class="bi bi-pencil"></i> Modifier
         </a>
 
-        <a href="/courses/valider/<?= urlencode($course['id_course']) ?>"
+        <a href="/course/valider/<?= urlencode($course['id_course']) ?>"
            class="btn btn-success"
            onclick="return confirm('Valider cette course ?');">
             <i class="bi bi-check2-circle"></i> Valider la course

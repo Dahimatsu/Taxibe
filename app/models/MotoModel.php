@@ -48,6 +48,7 @@ class MotoModel
                   FROM s3_motos 
                   WHERE idMoto = ?";
 
+
         try {
             $STH = $DBH->prepare($query);
             $STH->bindParam(1, $id);

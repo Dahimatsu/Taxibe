@@ -231,4 +231,14 @@ SELECT
         ((v.salaire / 100) * v.prix_course) + 
         ((v.entretien / 100) * v.prix_course)
     ) AS depense_totale
-FROM v_course_details v;
+FROM v_course_details v
+GROUP BY v.date_course;
+
+CREATE OR REPLACE VIEW v_rapport_journalier AS
+SELECT
+    rj.date_course,
+    rj.recette_totale,
+    dj.depense_totale,
+    (rj.recette_totale - dj.depense_totale) AS profit_net
+FROM v_recette_journaliere rj
+JOIN v_depense_journaliere dj ON rj.date_course = dj.date_course;

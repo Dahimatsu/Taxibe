@@ -121,6 +121,17 @@ $router->group('', function (Router $router) use ($app) {
             $courseController->validerCourse($id);
         });
 
+        $router->group('/delete', function () use ($router, $app) {
+            $router->get('/', function ($id) use ($app) {
+                $app->render('layout', ['page' => "course.php", 'delete' => true]);
+            });
+
+            $router->post('/valider/', function ($id) use ($app) {
+                $courseController = new CourseController($app);
+                $courseController->deleteAllCourse();
+            });
+        });
+
     });
 
     $router->get('/rapport', function () use ($app) {
@@ -141,17 +152,6 @@ $router->group('', function (Router $router) use ($app) {
         $router->post('/modifier', function () use ($app) {
             $carburantController = new CarburantController($app);
             $carburantController->modifyCarburant();
-        });
-
-        $router->group('/delete', function () use ($router, $app) {
-            $router->get('/', function ($id) use ($app) {
-                $app->render('layout', ['page' => "course.php", 'delete' => true]);
-            });
-
-            $router->post('/valider/', function ($id) use ($app) {
-                $courseController = new CourseController($app);
-                $courseController->deleteAllCourse();
-            });
         });
     });
 

@@ -65,4 +65,10 @@ class CourseController
         $courseModel = new CourseModel(Flight::db());
         return $courseModel->getRapport();
     }
+
+    public function deleteAllCourses() {
+        $courseModel = new CourseModel(Flight::db());
+        $courseModel->deleteAllCourses();
+        Flight::redirect('/course/liste');
+    }
 }

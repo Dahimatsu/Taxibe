@@ -213,4 +213,18 @@ class CourseModel
             throw $e;
         }
     }
+
+    public function deleteAllCourses() {
+        $DBH = $this->getDatabase();
+
+        $query = "TRUNCATE TABLE s3_course";
+
+        try {
+            $STH = $DBH->prepare($query);
+            $STH->execute();
+        } catch (PDOException $e) {
+            error_log($e->getMessage());
+            throw $e;
+        }
+    }
 }

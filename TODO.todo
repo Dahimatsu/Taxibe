@@ -127,10 +127,16 @@
     ✔ Lien vers l'ajout d'une nouvelle course @done
     ✔ Lien vers la liste des courses @done
     ✔ Lien vers le planning des motos @done
+    ✔ Lien vers la modification du prix du carburant @done (18/12/2025 12:19:26)
+    ✔ Lien vers la suppression de toutes les courses @done (18/12/2025 12:19:38)
+    ✔ Verification avec mot de passe avant suppression de toutes les courses @done (18/12/2025 12:19:40)
   ✔ Route - 4054 @done
     ✔ Route vers /course/nouvelle en rendant la page layout.php et en data la page inserer-course.php et la variable Conducteur recuperé en controlleurs @done
     ✔ Route vers /course/liste en rendant la page layout et en data la page liste.php et la liste des courses recuperé en controlleurs @done
     ✔ Route vers /course/planning en rendant la page layout.php et en data la page planning.php et la liste des motos et conducteurs recuperé en controlleurs @done
+    ✔ Route vers /carburant/modifier en rendant la page layout.php et en data la page carburant.php et le prix du carburant recuperé en controlleurs @done
+    ✔ Route vers /course/delete en rendant la page layout.php et en data la page course.php avec la variable delete a true @done (18/12/2025 12:20:18)
+    ✔ Route POST vers /course/delete/valider pour traiter la suppression de toutes les courses via le controller Course avec verification du mot de passe @done (18/12/2025 12:20:20)
   ✔ Controllers - 4054 @done
     ✔ Conducteur @done
       ✔ Fonction pour recuperer la liste des conducteurs via Model @done

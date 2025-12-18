@@ -170,33 +170,6 @@ SELECT
     c.id_course,
     cd.nom AS nom_conducteur,
     cd.prenom AS prenom_conducteur,
-    s.pourcentage AS salaire_pourcentage,
-    m.marque AS marque_moto,
-    m.modele AS modele_moto,
-    cons.consommation AS consommation_moto,
-    pc.prix AS prix_carburant,
-    c.prix_course AS prix_course,
-    c.date_course AS date_course
-FROM s3_course c
-JOIN s3_conducteurs cd ON c.id_conducteur = cd.id_conducteur
-JOIN s3_salaire s ON c.id_conducteur = s.id_conducteur
-JOIN s3_motos m ON c.id_moto = m.id_moto
-JOIN s3_consommation cons ON c.id_moto = cons.id_moto
-JOIN s3_prix_carburant pc ON m.id_carburant = pc.id_carburant
-JOIN s3_entretien e ON c.id_moto = e.id_moto
-WHERE
-    c.date_course >= s.date_salaire 
-    AND c.date_course >= cons.date_consommation
-    AND c.date_course >= pc.date_carburant
-    AND c.date_course >= e.date_entretien
-GROUP BY c.id_course;
-
-
-CREATE OR REPLACE VIEW v_course_details AS
-SELECT
-    c.id_course,
-    cd.nom AS nom_conducteur,
-    cd.prenom AS prenom_conducteur,
 
     (SELECT s.pourcentage
      FROM s3_salaire s
@@ -219,7 +192,7 @@ SELECT
      FROM s3_prix_carburant pc
      WHERE pc.id_carburant = m.id_carburant
        AND pc.date_carburant <= c.date_course
-     ORDER BY pc.date_carburant DESC
+     ORDER BY pc.date_carburant DESC, pc.id_prix DESC
      LIMIT 1) AS prix_carburant,
 
     (SELECT e.pourcentage
@@ -275,29 +248,3 @@ WHERE id_conducteur NOT IN (
     SELECT id_conducteur
     FROM s3_planning_moto
 );
-
-DELETE FROM s3_motos;
-ALTER TABLE s3_motos AUTO_INCREMENT = 1;
-
-DELETE FROM s3_conducteurs;
-ALTER TABLE s3_conducteurs AUTO_INCREMENT = 1;
-
-DELETE FROM s3_course;
-ALTER TABLE s3_course AUTO_INCREMENT = 1;
-
-DELETE FROM s3_consommation;
-ALTER TABLE s3_consommation AUTO_INCREMENT = 1;
-
-DELETE FROM s3_salaire;
-ALTER TABLE s3_salaire AUTO_INCREMENT = 1;
-
-DELETE FROM s3_entretien;
-ALTER TABLE s3_entretien AUTO_INCREMENT = 1;
-
-DELETE FROM s3_planning_moto;
-ALTER TABLE s3_planning_moto AUTO_INCREMENT = 1;
-
-SELECT * 
-FROM v_rapport_journalier
-WHERE date BETWEEN "17-12-2025" AND "19-12-2025"
-ORDER BY date DESC;

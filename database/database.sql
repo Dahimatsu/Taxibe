@@ -96,17 +96,18 @@ INSERT INTO s3_prix_carburant (id_carburant, prix, date_carburant) VALUES
 
 INSERT INTO s3_motos (marque, modele, id_carburant) VALUES
 ('Yamaha', 'Crypton', 1),
-('Yamaha', 'Crypton', 1),
-('Honda', 'Wave', 1),
-('Honda', 'Wave', 1),
+('Yamaha', 'T-Max', 1),
+('Honda', 'Wave 110', 1),
+('Honda', 'Wave 125', 1),
 
 ('Honda', 'Scoopy', 1),
-('Honda', 'Scoopy', 1),
+('Honda', 'Click 125', 1),
 
 ('Suzuki', 'Smash', 1),
-('Suzuki', 'Smash', 1),
-('Bajaj', 'Boxer', 1),
-('Bajaj', 'Boxer', 1);
+('Suzuki', 'Raider 150', 1),
+
+('Bajaj', 'Boxer 100', 1),
+('Bajaj', 'Discover 125', 1);
 
 INSERT INTO s3_consommation (id_moto, consommation, date_consommation) VALUES
 -- 4 motos à 2 L / 100
@@ -270,6 +271,9 @@ WHERE id_conducteur NOT IN (
     SELECT id_conducteur
     FROM s3_course
     WHERE heure_arrivee IS NULL
+) AND id_conducteur IN (
+    SELECT id_conducteur
+    FROM s3_planning_moto
 );
 
 DELETE FROM s3_motos;
@@ -292,3 +296,8 @@ ALTER TABLE s3_entretien AUTO_INCREMENT = 1;
 
 DELETE FROM s3_planning_moto;
 ALTER TABLE s3_planning_moto AUTO_INCREMENT = 1;
+
+SELECT * 
+FROM v_rapport_journalier
+WHERE date BETWEEN "17-12-2025" AND "19-12-2025"
+ORDER BY date DESC;

@@ -66,6 +66,14 @@ class CourseController
         return $courseModel->getRapport();
     }
 
+    public function getRapportFiltrer()
+    {
+        $dateDebut = Flight::request()->data->date_debut;
+        $dateFin = Flight::request()->data->date_fin;
+        $courseModel = new CourseModel(Flight::db());
+        return $courseModel->getRapportFiltrer($dateDebut, $dateFin);
+    }
+
     public function verifyMotDePasse() {
         $motDePasse = Flight::request()->data;
         if ($motDePasse['password'] === '1234') {

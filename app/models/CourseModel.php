@@ -214,6 +214,24 @@ class CourseModel
         }
     }
 
+    public function getRapportFiltrer($dateDebut, $dateFin) {
+        $DBH = $this->getDatabase();
+
+        $query = "SELECT * 
+                  FROM v_rapport_journalier
+                  WHERE date BETWEEN ? AND ?
+                  ORDER BY date DESC";
+
+        try {
+            $STH = $DBH->prepare($query);
+            $STH->execute([$dateDebut, $dateFin]);
+            return $STH->fetchAll();
+        } catch (PDOException $e) {
+            error_log($e->getMessage());
+            throw $e;
+        }
+    }
+
     public function deleteAllCourses() {
         $DBH = $this->getDatabase();
 

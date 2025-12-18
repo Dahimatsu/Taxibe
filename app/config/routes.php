@@ -142,12 +142,21 @@ $router->group('', function (Router $router) use ($app) {
         });
 
     });
+    
+    $router->group('/rapport', function () use ($router, $app) {
+        $router->get('/', function () use ($app) {
+            $courseController = new CourseController($app);
+            $courses = $courseController->getRapport();
 
-    $router->get('/rapport', function () use ($app) {
-        $courseController = new CourseController($app);
-        $courses = $courseController->getRapport();
+            $app->render('layout', ['page' => "rapport.php", 'coursesJour' => $courses]);
+        });
 
-        $app->render('layout', ['page' => "rapport.php", 'coursesJour' => $courses]);
+        $router->post('/filtre', function () use ($app) {
+            $courseController = new CourseController($app);
+            $courses = $courseController->getRapportFiltrer();
+
+            $app->render('layout', ['page' => "rapport.php", 'coursesJour' => $courses]);
+        });
     });
 
     $router->group('/carburant', function () use ($router, $app) {

@@ -30,6 +30,38 @@ if (!empty($coursesJour)) {
     </a>
 </div>
 
+<form method="post" action="/rapport/filtre" class="card mb-3 shadow-sm">
+    <div class="card-body">
+        <div class="row g-2 align-items-end">
+            <div class="col-md-4">
+                <label class="form-label">Date début</label>
+                <input type="date"
+                       name="date_debut"
+                       class="form-control"
+                       value="<?= $_POST['date_debut'] ?? '' ?>">
+            </div>
+
+            <div class="col-md-4">
+                <label class="form-label">Date fin</label>
+                <input type="date"
+                       name="date_fin"
+                       class="form-control"
+                       value="<?= $_POST['date_fin'] ?? '' ?>">
+            </div>
+
+            <div class="col-md-4 d-flex gap-2">
+                <button type="submit" class="btn btn-dark w-100">
+                    <i class="bi bi-funnel"></i> Filtrer
+                </button>
+
+                <a href="/rapport" class="btn btn-outline-secondary w-100">
+                    <i class="bi bi-x-circle"></i> Réinitialiser
+                </a>
+            </div>
+        </div>
+    </div>
+</form>
+
 <div class="row g-3 mb-3">
     <div class="col-md-4">
         <div class="card text-center">

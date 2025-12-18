@@ -122,11 +122,11 @@ $router->group('', function (Router $router) use ($app) {
         });
 
         $router->group('/delete', function () use ($router, $app) {
-            $router->get('/', function ($id) use ($app) {
+            $router->get('/', function () use ($app) {
                 $app->render('layout', ['page' => "course.php", 'delete' => true]);
             });
 
-            $router->post('/valider/', function ($id) use ($app) {
+            $router->post('/valider/', function () use ($app) {
                 $courseController = new CourseController($app);
                 $courseController->deleteAllCourse();
             });

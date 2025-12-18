@@ -80,6 +80,15 @@
                     Toutes les courses enregistrées seront définitivement supprimées.
                 </p>
 
+                <?php if(isset($message)) { ?>
+                    <div class="alert alert-danger d-flex align-items-center" role="alert">
+                        <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                        <div>
+                            <?= $message ?>
+                        </div>
+                    </div>
+                <?php } ?>
+
                 <?php if(isset($delete)) { ?>
                     
                     <form action="/course/delete/valider" method="post" class="row justify-content-center py-4">
@@ -87,7 +96,7 @@
                         <div class="col-md-6">
                             <label class="form-label visually-hidden">Mot de passe</label>
                             <input type="password"
-                                name="delete_password"
+                                name="password"
                                 class="form-control text-center"
                                 placeholder="Mot de passe de validation"
                                 required>
